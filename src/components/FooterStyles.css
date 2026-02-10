@@ -1,0 +1,116 @@
+.footer {
+    background: radial-gradient(circle at right,
+            rgba(0, 234, 255, 0.08),
+            #000 60%);
+    color: #9ca3af;
+    font-family: var(--font-tech, sans-serif);
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr;
+    gap: 3rem;
+    padding: 3rem 6rem;
+}
+
+/* ---------- TITLES ---------- */
+.footer-title {
+    color: #ffffff;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.footer-title::after {
+    content: "";
+    width: 44px;
+    height: 2px;
+    background: linear-gradient(90deg, #00eaff, #ff6a00);
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+}
+
+/* ---------- TEXT ---------- */
+.footer-col p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin: 0.35rem 0;
+    color: #9ca3af;
+}
+
+/* ---------- SOCIAL ICONS ---------- */
+.footer-socials {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.2rem;
+}
+
+.footer-socials a {
+    color: #ff6a00;
+    font-size: 1.25rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footer-socials a:hover,
+.footer-socials a:active {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 0 12px rgba(255, 106, 0, 0.6);
+}
+
+/* ---------- LINKS ---------- */
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-col ul li {
+    margin: 0.7rem 0;
+}
+
+.footer-col ul li a {
+    color: #9ca3af;
+    text-decoration: none;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.footer-col ul li a:hover,
+.footer-col ul li a:active {
+    color: var(--color-primary);
+    text-shadow: 0 0 8px var(--color-primary);
+}
+
+/* ---------- BOTTOM BAR ---------- */
+.footer-bottom {
+    background: linear-gradient(90deg,
+            rgba(255, 106, 0, 0.15),
+            rgba(0, 234, 255, 0.15));
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: #e5e7eb;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 900px) {
+    .footer-top {
+        grid-template-columns: 1fr;
+        padding: 3rem 2rem;
+        text-align: center;
+    }
+
+    .footer-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .footer-socials {
+        justify-content: center;
+    }
+}

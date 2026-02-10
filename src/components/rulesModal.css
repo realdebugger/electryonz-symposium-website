@@ -1,0 +1,140 @@
+.rules-overlay {
+  position: fixed;
+  inset: 0; /* top:0 right:0 bottom:0 left:0 */
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Modal box */
+.rules-modal {
+  width: min(90vw, 520px);
+  max-height: 80vh;
+  overflow-y: auto;
+
+  background: linear-gradient(
+    180deg,
+    rgba(15, 15, 20, 0.95),
+    rgba(10, 10, 15, 0.95)
+  );
+
+  border-radius: 18px;
+  padding: 2rem 2.2rem;
+
+  box-shadow:
+    0 0 0 1px rgba(0, 255, 255, 0.15),
+    0 25px 80px rgba(0, 0, 0, 0.8);
+
+  animation: modalIn 0.35s ease forwards;
+}
+
+/* Title */
+.rules-modal h2 {
+  color: #ff8c2a;
+  font-family: var(--font-tech);
+  letter-spacing: 1px;
+  margin-bottom: 1.2rem;
+}
+
+/* Rules list */
+.rules-modal ul {
+  list-style: none;
+  padding: 0;
+}
+
+.rules-modal li {
+  color: #ddd;
+  margin-bottom: 0.8rem;
+  line-height: 1.6;
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.rules-modal li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #00f6ff;
+}
+
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+
+
+
+.rules-modal .btn {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+}
+.rules-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0.6;
+}
+.rules-close:hover {
+  opacity: 1;
+}
+
+@media (max-width: 480px) {
+  .rules-modal {
+    width: 94vw;
+    max-height: 80vh;
+    padding: 1.4rem;
+  }
+  .rules-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.8rem;
+  }
+}
+.btn-grp {
+  display: flex;
+  gap: 12px; /* increase this */
+}
+
+
+.rules-btn {
+  padding: 0.55rem 1.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+
+  color: #0a0a0a;
+  background: linear-gradient(135deg, #6ffcff, #2ee8ff);
+
+  border: none;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  box-shadow: 0 0 14px rgba(111, 252, 255, 0.45);
+}
+.rules-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 22px rgba(111, 252, 255, 0.65);
+}
+.rules-btn:active {
+  transform: scale(0.96);
+  box-shadow: 0 0 10px rgba(111, 252, 255, 0.4);
+}
+
+

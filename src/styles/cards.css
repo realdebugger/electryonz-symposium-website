@@ -1,0 +1,65 @@
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover,
+.card:active {
+  transform: translateY(-8px);
+}
+
+/* Warm (Technical) */
+.card.warm:hover,
+.card.warm:active {
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
+  border-color: var(--color-primary);
+}
+
+/* Cold (Non-Technical) */
+.card.cold:hover,
+.card.cold:active {
+  box-shadow: 0 0 30px rgba(255, 107, 0, 0.4);
+  border-color: var(--color-secondary);
+}
+
+/* Workshop / Neutral */
+.card.workshop:hover,
+.card.workshop:active {
+  box-shadow: 0 0 30px rgba(217, 70, 239, 0.35);
+  border-color: #9900ff;
+  ;
+}
+
+/* EVENT CARD ENTRY */
+.event-card {
+  padding: 2rem;
+  transition: transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(24px) scale(0.98);
+  animation: eventCardEnter 0.55s ease forwards;
+}
+
+@keyframes eventCardEnter {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes cardFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.details-btn .btn .btn-secondary {
+  transition:
+    padding 0.25s ease,
+    min-width 0.25s ease,
+    height 0.25s ease;
+}

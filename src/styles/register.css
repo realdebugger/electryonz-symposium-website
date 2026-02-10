@@ -1,0 +1,70 @@
+/* Default (Desktop & Tablet) */
+.Registercards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.Registertitle {
+  font-size: clamp(3rem, 8vw, 4.5rem);
+  letter-spacing: 0.15em;
+  white-space: nowrap;
+  overflow: visible;
+  text-align: center;
+}
+
+   
+.Registercardsnon{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.Formcontainer{
+    max-width: 768px;
+    margin: 0 auto;
+}
+ 
+.Formcontainer input:active{
+   border:40px solid #ff0000 ;
+}
+
+.Formcontainer input:focus{
+    border:40px solid #ff0000 ;
+}
+/* Large phones (3 cards per row) */
+@media (max-width: 768px) {
+  .Registertitle {
+    transform: scale(0.7);
+  }
+  .Formcontainer {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 2rem 1.25rem;
+  box-sizing: border-box;
+}
+.Registercards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    justify-content: center;
+    transform: scale(0.7);
+  }
+
+.Registercardsnon{
+  grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    justify-content: center;
+}
+}
+
+/* Small phones (2 cards per row) */
+@media (max-width: 480px) {
+  .Registercards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    justify-content: center;
+  }
+  
+}
+
+

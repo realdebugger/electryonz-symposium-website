@@ -1,0 +1,271 @@
+@media (max-width: 768px) {
+
+  .home-page {}
+
+  h1 {
+    letter-spacing: 0.04em !important;
+  }
+
+  :root {
+    --section-spacing: 3.5rem;
+  }
+
+  .container {
+    padding: 0 0rem;
+  }
+
+  /* ---------------Hero----------------- */
+  .institution-header {
+    position: relative;
+    left: 0;
+    transform: none;
+    margin: 0 auto 1rem;
+  }
+
+  .inst-dept {
+    padding-top: 0.6rem;
+    /* ↓ from 1.5rem */
+    line-height: 1.2;
+  }
+
+  .inst-text {
+    font-size: 0.65rem;
+    width: auto;
+    flex: 1;
+    text-align: center;
+    margin: 0;
+    line-height: 1.25;
+  }
+
+
+  .hero-title {
+    font-size: 3.2rem;
+    line-height: 1.15;
+  }
+
+  .hero-section {
+    min-height: 42vh;
+    padding-top: 0;
+    margin-top: -30px;
+    /* 👆 Move up to counteract global padding */
+  }
+
+
+  .hero-institution {
+    padding-top: 10px;
+    width: 100%;
+    max-width: 100%;
+    /* Allow full width for row layout */
+    padding-inline: 10px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    /* 👈 Switch to row */
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .hero-presents {
+    font-size: 0.9rem;
+  }
+
+  .inst-logo {
+    position: static;
+    display: block;
+    margin: 0;
+    height: 45px;
+    /* 👈 Much smaller to fit in row */
+    opacity: 0.7;
+    width: auto;
+  }
+
+
+  .inst-logo.left {
+    left: 16px;
+  }
+
+  .inst-logo.right {
+    right: 16px;
+  }
+
+
+  .hero-actions {
+    gap: 0.6rem;
+  }
+
+
+  .hero-actions .btn {
+    min-width: 120px;
+    font-size: 1rem;
+    padding: 0.7rem 1rem;
+  }
+
+  /* --------------About------------ */
+  .about-section {
+    width: 90%;
+  }
+
+  .ignite-container h2 {
+    font-size: 2.5rem;
+    text-align: left;
+  }
+
+  /* ---------------------------------------------------------------- */
+  /* ----------------------------Highlight------------------------------------ */
+  /* ---------------------------------------------------------------- */
+  .highlight-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    /* 🔑 centers fixed-width cards */
+    gap: 1.5rem;
+  }
+
+  .highlight-section {
+    width: 320px;
+    /* 🔑 FORCE SAME WIDTH */
+    max-width: 320px;
+    box-sizing: border-box;
+    transform: translateY(20px);
+  }
+
+  /* -----------------schedule--- */
+  .schedule-row {
+    grid-template-rows: 1fr;
+    gap: 1rem;
+    padding: 20px;
+  }
+
+  .schedule-row.header {
+    grid-template-rows: 1fr;
+    gap: 1rem;
+    padding: 20px;
+  }
+
+  .schedule-row div::before {
+    content: attr(data-label);
+    font-size: 0.7rem;
+    opacity: 0.6;
+    display: block;
+  }
+
+  /* --------------Countodown------------ */
+  .hero-timer {
+    margin-top: 20px;
+    gap: 6px;
+    justify-content: center;
+    font-size: 1rem;
+  }
+
+  .timer-label {
+    text-align: center;
+    font-size: 0.5rem;
+    letter-spacing: 3px;
+  }
+
+  .countdown {
+    text-align: center;
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+  }
+
+  .hero {
+    padding-top: 20px;
+    min-height: 60vh;
+  }
+
+
+  /* ----------------------Events page---------------------------------- */
+  /* ------------------------------------------------------------------- */
+  .events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
+    gap: 1rem;
+  }
+
+  .event-card {
+    padding: 0.6rem;
+  }
+
+  .event-card h3 {
+    font-size: 0.75rem;
+    margin-bottom: 0.2rem;
+    padding-top: 0.9rem;
+  }
+
+  .event-card p {
+    font-size: 0.6rem;
+    line-height: 1.25;
+  }
+
+  .event-card button {
+    font-size: 0.55rem;
+    padding: 0.25rem 0.4rem;
+  }
+
+  .event-card>div:first-child {
+    font-size: 0.5rem;
+    padding: 0.1rem 0.4rem;
+  }
+
+  .container-section {
+    transform: scale(0.9);
+  }
+
+  .container-section h1 {
+    font-size: 2.6rem;
+    letter-spacing: 2px;
+  }
+}
+
+/* 📱 MOBILE S (320px) FIX */
+@media (max-width: 374px) {
+  .hero {
+    padding-top: 20px;
+  }
+
+  .hero-institution {
+    gap: 2px;
+    /* Super tight gap */
+    padding-inline: 2px;
+  }
+
+  .inst-logo {
+    height: 32px !important;
+    /* Even smaller logos */
+    min-width: 32px;
+    /* Prevent sizing issues */
+  }
+
+  .inst-text {
+    font-size: 0.55rem !important;
+    /* Readable but small */
+    line-height: 1.1;
+    width: auto;
+    flex: 1;
+    white-space: normal;
+    /* Allow wrap */
+  }
+
+  .inst-college {
+    display: block;
+    margin-bottom: 2px;
+    letter-spacing: 0.5px;
+    /* Tighter tracking */
+  }
+
+  .inst-dept {
+    letter-spacing: 0.5px;
+  }
+}
+
+
+
+@media (hover: none) {
+  .hero:active .hero-particles {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+}

@@ -1,0 +1,153 @@
+/* ===============================
+   PAYMENT PAGE
+================================ */
+
+.payment-page {
+  max-width: 420px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Title */
+.payment-page h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.payment-sub {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+
+/* ===============================
+   PAYMENT CARD
+================================ */
+
+.payment-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--color-border);
+  padding: 2rem;
+  border-radius: 14px;
+  backdrop-filter: blur(10px);
+}
+
+/* Amount */
+.payment-amount {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* Event name */
+.payment-event {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+}
+
+/* ===============================
+   QR SECTION
+================================ */
+
+.payment-qr {
+  margin: 1.5rem 0;
+}
+
+.payment-qr img {
+  width: 220px;
+  height: 220px;
+  border-radius: 12px;
+  background: #fff;
+  padding: 10px;
+}
+
+.payment-qr-text {
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+/* ===============================
+   PAY BUTTON
+================================ */
+
+.pay-btn {
+  display: block;
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 0.9rem;
+  font-size: 1rem;
+  font-weight: bold;
+  background: var(--color-primary);
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pay-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 240, 255, 0.25);
+}
+
+/* ===============================
+   UTR INPUT
+================================ */
+
+.utr-box {
+  margin-top: 1.5rem;
+  text-align: left;
+}
+
+.utr-box label {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.utr-box input {
+  width: 100%;
+  margin-top: 0.4rem;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.utr-box input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* ===============================
+   STATUS INFO
+================================ */
+
+.payment-note {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+/* ===============================
+   MOBILE OPTIMIZATION
+================================ */
+
+@media (max-width: 480px) {
+  .payment-page h1 {
+    font-size: 1.6rem;
+  }
+
+  .payment-card {
+    padding: 1.5rem;
+  }
+
+  .payment-qr img {
+    width: 200px;
+    height: 200px;
+  }
+}
