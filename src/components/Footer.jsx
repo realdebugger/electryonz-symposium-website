@@ -11,9 +11,8 @@ const Footer = () => {
         <div className="footer-col">
           <h4 className="footer-title">ABOUT US</h4>
           <p>
-            Mechanical Engineering Association (MEA) is the major part of the
-            Department of Mechanical Engineering, headed by
-            Dr. P. Thirumal, Head of the Department.
+            The Electrical and Electronics Engineering Association (EEEA) forms an integral part of the Department of Electrical and Electronics Engineering,
+            led by Dr. Christymanoraj, whose guidance keeps both circuits and students well-connected.
           </p>
         </div>
 
@@ -25,26 +24,20 @@ const Footer = () => {
           <p>NH 46, Chennai–Bangalore Highway</p>
           <p>Bargur, Krishnagiri – 635104</p>
 
-          <p>✉️ synerix26@gmail.com</p>
-          <p>📞 +91 6369143807</p>
+          <p>✉️ altranz2026@gmail.com</p>
+          <p>📞 +91 9344766994</p>
 
 
           <div className="footer-socials">
             <a
-              href="https://www.instagram.com/phantasm_gceb?igsh=MW9kYzE5cjFtbWo5ag=="
+              href="https://www.instagram.com/altranzofficial?igsh=MTJhbHFjMWRvdnVudA=="
               target="_blank"
               rel="noopener noreferrer"
             >
               <i className="fa-brands fa-instagram"></i>
             </a>
 
-            <a
-              href="https://www.youtube.com/@synerix"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i className="fa-brands fa-youtube"></i>
-            </a>
+
           </div>
 
         </div>
@@ -65,7 +58,7 @@ const Footer = () => {
 
       {/* BOTTOM BAR */}
       <div className="footer-bottom">
-        DEVELOPED BY MEAGCEB © 2026
+        DEVELOPED BY ALTRANZ © 2026
       </div>
     </footer>
   );

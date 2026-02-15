@@ -46,13 +46,13 @@ const ParticlesComponent = (props) => {
         events: {
           onClick: {
             enable: window.matchMedia("(hover: none)").matches,
-           mode: "bubble",
+            mode: "bubble",
           },
           onHover: {
-            enable: true,
+            enable: false,
             mode: "bubble", // subtle, premium
             parallax: {
-              enable: true,
+              enable: false,
               force: 10,
               smooth: 20
             },
@@ -79,7 +79,7 @@ const ParticlesComponent = (props) => {
         },
 
         color: {
-          value: ["#ff6b00", "#00f0ff"], // 🔥 warm + ❄ cold
+          value: ["#FFD700", "#C0C0C0"], // 🟠 Gold + ⚪ Silver
         },
         shadow: {
           enable: true,

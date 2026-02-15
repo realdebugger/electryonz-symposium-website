@@ -1,0 +1,107 @@
+.circuit-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.15;
+    background: var(--color-bg-dark);
+}
+
+.circuit-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.circuit-line {
+    stroke: var(--color-primary);
+    stroke-width: 1;
+    fill: none;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: pulse-line 8s linear infinite;
+}
+
+.circuit-node {
+    fill: var(--color-primary);
+    filter: drop-shadow(0 0 5px var(--color-primary));
+    opacity: 0;
+    animation: pulse-node 8s ease-in-out infinite;
+}
+
+@keyframes pulse-line {
+    0% {
+        stroke-dashoffset: 1000;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    40% {
+        stroke-dashoffset: 0;
+        opacity: 1;
+    }
+
+    60% {
+        stroke-dashoffset: 0;
+        opacity: 0.2;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes pulse-node {
+
+    0%,
+    35% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    40%,
+    60% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+/* Staggered starts for different lines */
+.circuit-line:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.circuit-line:nth-child(2) {
+    animation-delay: 2s;
+}
+
+.circuit-line:nth-child(3) {
+    animation-delay: 4s;
+}
+
+.circuit-line:nth-child(4) {
+    animation-delay: 6s;
+}
+
+.circuit-line:nth-child(5) {
+    animation-delay: 1s;
+}
+
+.circuit-node:nth-child(odd) {
+    animation-delay: 1s;
+}
+
+.circuit-node:nth-child(even) {
+    animation-delay: 3s;
+}

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;600;800&display=swap');
 
 @import "./styles/Hero.css";
 @import "./styles/events.css";
@@ -31,6 +31,7 @@ body {
     opacity: 0;
     transform: translateY(16px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -38,26 +39,27 @@ body {
 }
 
 :root {
-  /* Colors - SYNERIX Theme */
-  --color-bg-dark: #050510;
-  --color-bg-card: #0a0a1a;
+  /* Colors - Gold & Black Theme */
+  --color-bg-dark: #050505;
+  --color-bg-card: #1a1a1a;
 
-  --color-primary: #ff6b00;
-  --color-primary-glow: rgba(255, 107, 0, 0.4);
+  --color-primary: #FFD700;
+  --color-primary-glow: rgba(255, 215, 0, 0.4);
 
-  --color-secondary: #00f0ff;
-  --color-secondary-glow: rgba(0, 240, 255, 0.4);
+  --color-secondary: #C0C0C0;
+  --color-secondary-glow: rgba(192, 192, 192, 0.4);
 
-  --color-tertiary: #9900ff;
-  --color-tertiary-glow: rgb(182, 73, 255);
+  --color-tertiary: #DAA520;
+  --color-tertiary-glow: rgba(218, 165, 32, 0.4);
 
   --color-text-main: #ffffff;
   --color-text-muted: #a0a0b0;
 
-  --color-border: rgba(255, 255, 255, 0.1);
+  --color-border: rgba(255, 215, 0, 0.2);
 
   /* Fonts */
   --font-display: 'Orbitron', sans-serif;
+  --font-hero: 'Cinzel Decorative', serif;
   --font-tech: 'Rajdhani', sans-serif;
   --font-body: 'Inter', sans-serif;
 
@@ -165,6 +167,7 @@ h1 {
   font-size: 4rem;
   background: linear-gradient(135deg, #fff 0%, var(--color-text-muted) 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -196,21 +199,43 @@ h2 {
 /* ===========================
    SCROLLBAR
    =========================== */
+/* ===========================
+   PREMIUM GOLD SCROLLBAR
+   =========================== */
 ::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
+  width: 8px;
+  /* Slightly thinner for elegance */
   background: var(--color-bg-dark);
 }
 
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+  /* Darker track */
+  border-left: 1px solid rgba(255, 215, 0, 0.1);
+  /* Subtle border */
+}
+
 ::-webkit-scrollbar-thumb {
-  background: var(--color-border);
-  border-radius: 4px;
+  background: linear-gradient(180deg,
+      #bf953f,
+      #fcf6ba,
+      #b38728,
+      #fbf5b7,
+      #aa771c);
+  /* Metallic Gold Gradient */
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  /* Contrast border */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-secondary);
+  background: linear-gradient(180deg,
+      #d4af37,
+      #fffacd,
+      #c5a028);
+  /* Brighter gold on hover */
+  box-shadow: 0 0 15px var(--color-primary-glow);
+  /* Golden glow */
 }
 
 /* =========================
@@ -325,21 +350,21 @@ h2 {
   justify-content: center;
   gap: 2rem;
 }
+
 .highlight-section {
   scale: 0.8;
   padding: 3rem 2rem;
   border: 1px solid var(--color-border);
-  background: linear-gradient(
-    180deg,
-    rgba(255,255,255,0.02),
-    transparent
-  );
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.02),
+      transparent);
   text-align: center;
   cursor: pointer;
   transition: transform 0.3s ease-in-out, border-color 0.3s ease;
-   
-  
+
+
 }
+
 .highlight-technical {
   --highlight-color: var(--color-primary);
 }
@@ -348,9 +373,8 @@ h2 {
   --highlight-color: var(--color-secondary);
 }
 
-.highlight-workshop {
-  --highlight-color: #d946ef;
-}
+
+
 @media (hover: hover) {
   .highlight-section:hover {
     transform: translateY(-10px);
@@ -366,6 +390,7 @@ h2 {
     opacity: 0;
     transform: translateY(16px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -378,10 +403,12 @@ h2 {
     transform: scale(0.9);
     opacity: 0.6;
   }
+
   50% {
     transform: scale(1.05);
     opacity: 1;
   }
+
   100% {
     transform: scale(1);
   }
@@ -392,7 +419,81 @@ h2 {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
+  }
+}
+
+/* ===========================
+   CINEMATIC PRELOADER
+   =========================== */
+.preloader {
+  position: fixed;
+  inset: 0;
+  background-color: #000;
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.8s ease-in-out, visibility 0.8s;
+}
+
+.preloader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.preloader-content {
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.preloader-title {
+  font-family: var(--font-hero);
+  font-size: clamp(3rem, 8vw, 6rem);
+  letter-spacing: 0.2em;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  animation: revealText 1.5s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.preloader-title .outline {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--color-primary);
+}
+
+.preloader-subtitle {
+  font-family: var(--font-tech);
+  color: var(--color-primary);
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  font-size: 1rem;
+  animation: fadeIn 1s ease-out 0.5s forwards;
+  opacity: 0;
+}
+
+.preloader-line {
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  margin: 1.5rem auto 0;
+  animation: expandLine 1.5s ease-in-out 0.8s forwards;
+}
+
+@keyframes revealText {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes expandLine {
+  to {
+    width: 80%;
   }
 }

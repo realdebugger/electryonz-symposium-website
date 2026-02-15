@@ -8,6 +8,10 @@ import gceLogo from "../assets/gce_logo.png";
 import meaLogo from "../assets/mea_logo.png";
 
 
+import CountdownTimer from "../components/CountdownTimer";
+
+import Magnetic from "../components/Magnetic";
+
 const Home = () => {
   useReveal();
   const navigate = useNavigate();
@@ -87,12 +91,15 @@ const Home = () => {
 
             <div className="inst-text">
               <p className="inst-college">Government College of Engineering, Bargur – Krishnagiri</p>
-              <p className="inst-dept">Department of Mechanical Engineering</p>
+              <p className="inst-assoc">(An Autonomous Institution Affiliated to Anna University &
+                Accredited by NAAC AND NBA )</p>
+              <p className="inst-dept">Department of Electrical And Electronics Engineering</p>
+
             </div>
 
             <img
               src={meaLogo}
-              alt="Mechanical Association"
+              alt="Electric Association"
               className="inst-logo right"
             />
           </div>
@@ -108,31 +115,35 @@ const Home = () => {
             >
               <div className="hero-branding">
                 <div className="hero-presents reveal delay-1">PRESENTS</div>
-                <div className="hero-phantasm reveal delay-2">PHANTASM’26</div>
+                <div className="hero-phantasm reveal delay-2">ELECTRYONZ’26</div>
 
-                <h1 className="hero-title reveal delay-3">
-                  SYNER
-                  <span className="hero-title-outline reveal delay-3">IX</span>
+                <h1 className="hero-title glitch reveal delay-3" data-text="ALTRANZ">
+                  ALTRA
+                  <span className="hero-title-outline reveal delay-3">NZ</span>
                 </h1>
               </div>
 
               <p className="hero-subtitle reveal delay-4">
-                The ultimate convergence of mechanical innovation and engineering excellence.
-                Join us for hands-on challenges, technical mastery, and future-ready engineering.
+                Organized a symposium that proved learning can be fun,
+                networking can be awkwardly awesome, and ideas do collide—sometimes literally
               </p>
 
               <div className="hero-actions reveal delay-5">
-                <Link to="/register" className="btn">
-                  Register Now
-                </Link>
+                <Magnetic strength={0.2} radius={150}>
+                  <Link to="/register" className="btn">
+                    Register Now
+                  </Link>
+                </Magnetic>
 
-                <Link to="/events" className="btn btn-secondary">
-                  View Events
-                </Link>
+                <Magnetic strength={0.2} radius={150}>
+                  <Link to="/events" className="btn btn-secondary">
+                    View Events
+                  </Link>
+                </Magnetic>
 
               </div>
               <div className="hero-dates scanline reveal delay-6">
-                FEBRUARY 19, 20 & 21
+                FEBRUARY 26 & 27
               </div>
 
 
@@ -143,7 +154,7 @@ const Home = () => {
 
       {/* ================= STATS SECTION ================= */}
       <div className="hero-timer">
-        <CountdownCounter targetDate="2026-02-19T09:00:00" />
+        <CountdownTimer targetDate="2026-02-26T09:00:00" />
       </div>
       {/* ================= ABOUT TEASER ================= */}
       <section
@@ -151,15 +162,14 @@ const Home = () => {
         style={{ background: "var(--color-bg-card)" }}
       >
         <div className="container ignite-container">
-          <h2 className="ignite-title">Ignite Your Potential</h2>
+          <h2 className="ignite-title">Charge Forward</h2>
 
           <p className="ignite-desc">
-            Synerix is not just a symposium; it's a platform for the next generation
-            of innovators.
+            Register today—because epic memories aren’t made from staying home
           </p>
 
           <ul className="ignite-list">
-            {["20+ Events", "Cash Prizes", "Industry Experts"].map((item) => (
+            {["10+ Events", "Cash Prizes"].map((item) => (
               <li key={item}>
                 <span className="ignite-arrow">►</span>
                 {item}
@@ -179,7 +189,6 @@ const Home = () => {
         {[
           { title: "Technical", color: "var(--color-primary)" },
           { title: "Non-Technical", color: "var(--color-secondary)" },
-          { title: "Workshop", color: "#d946ef" },
         ].map((card) => (
           <div
             key={card.title}

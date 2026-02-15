@@ -10,22 +10,22 @@
 /* Warm (Technical) */
 .card.warm:hover,
 .card.warm:active {
-  box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
+  box-shadow: 0 0 30px var(--color-primary-glow);
   border-color: var(--color-primary);
 }
 
 /* Cold (Non-Technical) */
 .card.cold:hover,
 .card.cold:active {
-  box-shadow: 0 0 30px rgba(255, 107, 0, 0.4);
+  box-shadow: 0 0 30px var(--color-secondary-glow);
   border-color: var(--color-secondary);
 }
 
 /* Workshop / Neutral */
 .card.workshop:hover,
 .card.workshop:active {
-  box-shadow: 0 0 30px rgba(217, 70, 239, 0.35);
-  border-color: #9900ff;
+  box-shadow: 0 0 30px var(--color-tertiary-glow);
+  border-color: var(--color-tertiary);
   ;
 }
 
@@ -36,6 +36,20 @@
   opacity: 0;
   transform: translateY(24px) scale(0.98);
   animation: eventCardEnter 0.55s ease forwards;
+
+  /* Standardize size to match Paper Presentation */
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.event-card h3 {
+  margin-top: 1rem;
+  min-height: 3.5rem;
+  /* Ensure two-line titles don't break alignment */
+  display: flex;
+  align-items: center;
 }
 
 @keyframes eventCardEnter {

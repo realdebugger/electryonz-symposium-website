@@ -1,7 +1,6 @@
 @media (max-width: 768px) {
 
-  .home-page {}
-
+  /* Fixed empty rule */
   h1 {
     letter-spacing: 0.04em !important;
   }
@@ -11,7 +10,7 @@
   }
 
   .container {
-    padding: 0 0rem;
+    padding: 0;
   }
 
   /* ---------------Hero----------------- */

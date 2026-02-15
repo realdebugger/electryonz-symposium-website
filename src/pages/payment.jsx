@@ -17,7 +17,7 @@ const Payment = () => {
   // Truncate event name to 80 chars to avoid UPI limit errors
   const safeNote = (eventName || "SYNERIX EVENT").substring(0, 80);
 
-  const upiLink = `upi://pay?pa=vvarunraj69@oksbi&pn=${encodeURIComponent(
+  const upiLink = `upi://pay?pa=madhankumar1652005@oksbi&pn=${encodeURIComponent(
     "SYNERIX MEA"
   )}&am=${formattedAmount}&cu=INR&tn=${encodeURIComponent(safeNote)}`;
 

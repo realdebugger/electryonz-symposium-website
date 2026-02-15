@@ -1,23 +1,24 @@
 import React from "react";
 import { useState } from "react";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { technicalEventDescriptions } from "../data/eventDescription";
 import RulesModal from "../components/RulesModal";
 
 
 
+import Tilt from 'react-parallax-tilt';
+
 const EventCard = ({ event, isOpen, onToggle, index, onOpenRules }) => {
   const navigate = useNavigate();
 
-  const [showRules, setShowRules] = useState(false);
-const [activeEvent, setActiveEvent] = useState(null);
+
 
   const categoryClass =
     event.category === "Technical"
       ? "warm"
       : event.category === "Non-Technical"
-      ? "cold"
-      : "workshop";
+        ? "cold"
+        : "workshop";
 
   let buttonColor;
   if (event.category === "Technical") buttonColor = "btn-secondary";
@@ -38,15 +39,22 @@ const [activeEvent, setActiveEvent] = useState(null);
   };
 
   return (
-    <div
+    <Tilt
+      glareEnable={true}
+      glareMaxOpacity={0.3}
+      glareColor="#ffffff"
+      glarePosition="all"
+      scale={1.02}
+      tiltMaxAngleX={10}
+      tiltMaxAngleY={10}
       className={`event-card card ${categoryClass}`}
       style={{
         border: `1px solid ${borderColor}`,
         background: "rgba(255,255,255,0.03)",
         position: "relative",
         animation: `cardFadeUp 0.5s ease forwards`,
-      animationDelay: `${index * 120}ms`,
-      animationFillMode: "both"
+        animationDelay: `${index * 120}ms`,
+        animationFillMode: "both"
 
       }}
     >
@@ -69,63 +77,88 @@ const [activeEvent, setActiveEvent] = useState(null);
       {/* BASIC CONTENT */}
       <h3 style={{ color: "#fff" }}>{event.title}</h3>
 
-      {event.category !== "Workshop" && (<p
-        style={{
-          color: "var(--color-text-muted)",
-          fontSize: "0.9rem",
-        }}
-      >
-        Entry:&nbsp;
-        {Object.entries(event.fee).map(([mode, price], i) => (
-          <span key={mode}>
-            {mode}: ₹{price}
-            {i < Object.keys(event.fee).length - 1 && " | "}
-          </span>
-        ))}
-      </p>
-      )}  {event.category == "Workshop" && (<p
-        style={{
-          color: "var(--color-text-muted)",
-          fontSize: "0.9rem",
-        }}
-      >
-        Entry:&nbsp;
-        {Object.entries(event.fee).map(([mode, price], i) => (
-          <span key={mode}>
-            ₹{price}
-            {i < Object.keys(event.fee).length - 1 && " | "}
-          </span>
-        ))}
-      </p>
-      )} 
+      {event.fee && event.category !== "Workshop" && (
+        <p
+          style={{
+            color: "var(--color-text-muted)",
+            fontSize: "0.9rem",
+          }}
+        >
+          Entry:&nbsp;
+          {Object.entries(event.fee).map(([mode, price], i) => {
+            const isEarlyBirdEvent = event.id === "paper-presentation" || event.id === "project-expo";
+            const isEarlyBirdActive = new Date() < new Date("2026-02-22");
+            const showEarlyBird = isEarlyBirdEvent && isEarlyBirdActive;
+
+            return (
+              <span key={mode}>
+                {mode}:&nbsp;
+                {showEarlyBird ? (
+                  <>
+                    <span style={{ textDecoration: "line-through", opacity: 0.6, marginRight: "5px" }}>
+                      ₹{price}
+                    </span>
+                    <span style={{ color: "var(--color-primary)", fontWeight: "bold" }}>
+                      ₹300
+                    </span>
+                    <span style={{ fontSize: "0.7rem", color: "var(--color-primary)", marginLeft: "5px", verticalAlign: "middle" }}>
+                      (EARLY BIRD)
+                    </span>
+                  </>
+                ) : (
+                  `₹${price}`
+                )}
+                {i < Object.keys(event.fee).length - 1 && " | "}
+              </span>
+            );
+          })}
+        </p>
+      )}
+
+      {event.fee && event.category === "Workshop" && (
+        <p
+          style={{
+            color: "var(--color-text-muted)",
+            fontSize: "0.9rem",
+          }}
+        >
+          Entry:&nbsp;
+          {Object.entries(event.fee).map(([mode, price], i) => (
+            <span key={mode}>
+              ₹{price}
+              {i < Object.keys(event.fee).length - 1 && " | "}
+            </span>
+          ))}
+        </p>
+      )}
 
       {/* DETAILS BUTTON */}
       <div className="btn-grp">
-      <button
-        onClick={(e) => {
-          e.stopPropagation();
-          onToggle();
-        }}
-        className="details-btn btn btn-secondary"
-        style={{
-          margin: "1rem 0",
-          padding: "0.5rem 1rem",
-        }}
-      >
-        {isOpen ? "Hide Details" : "Details"}
-      </button>
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onToggle();
+          }}
+          className="details-btn btn btn-secondary"
+          style={{
+            margin: "1rem 0",
+            padding: "0.5rem 1rem",
+          }}
+        >
+          {isOpen ? "Hide Details" : "Details"}
+        </button>
 
-<button
-  className="btn btn-secondary"
-  onClick={() => {
-    console.log("Rules clicked:", event.title);
-    setActiveEvent(event);
-    setShowRules(true);
-  }}
->
-  Rules
-</button>
-</div>
+        <button
+          className="btn btn-secondary"
+          onClick={(e) => {
+            e.stopPropagation();
+            console.log("Rules clicked (child):", event.title);
+            onOpenRules(event);
+          }}
+        >
+          Rules
+        </button>
+      </div>
       {/* EXPANDABLE SECTION (SMOOTH ANIMATION) */}
       <div
         className={`event-details ${isOpen ? "open" : ""}`}
@@ -149,30 +182,38 @@ const [activeEvent, setActiveEvent] = useState(null);
           </p>
         )}
 
-        {event.category !== "Workshop" && (<p
-          style={{
-            color: "#aaa",
-            fontSize: "0.9rem",
-            lineHeight: 1.6,
-          }}
-        >
-          🕒 Duration: {event.duration || "1–2 Hours"} <br />
-          👥 Team Size: {event.maxMembers || "Solo / Team"} <br />
-          📍 Venue: {event.venue || "Mechanical Block"} <br />
-          🏆 Certificates & exciting prizes
-        </p>)}
+        {event.category !== "Workshop" && (
+          <p
+            style={{
+              color: "#aaa",
+              fontSize: "0.9rem",
+              lineHeight: 1.6,
+            }}
+          >
+            🕒 Duration: {event.duration || "1–2 Hours"} <br />
+            {event.maxMembers && (
+              <>
+                👥 Team Size: {event.maxMembers || "Solo / Team"} <br />
+              </>
+            )}
+            📍 Venue: {event.venue || "Mechanical Block"} <br />
+            🏆 Certificates & exciting prizes
+          </p>
+        )}
 
-        {event.category == "Workshop" && (<p
-          style={{
-            color: "#aaa",
-            fontSize: "0.9rem",
-            lineHeight: 1.6,
-          }}
-        >
-          🕒 Duration: {event.duration || "1–2 Hours"} hrs<br />
-          📍 Venue: {event.venue || "Mechanical Block"} <br />
-          🏆 Certificates will be provided
-        </p>)}
+        {event.category === "Workshop" && (
+          <p
+            style={{
+              color: "#aaa",
+              fontSize: "0.9rem",
+              lineHeight: 1.6,
+            }}
+          >
+            🕒 Duration: {event.duration || "1–2 Hours"} hrs<br />
+            📍 Venue: {event.venue || "Mechanical Block"} <br />
+            🏆 Certificates will be provided
+          </p>
+        )}
 
 
         <button
@@ -187,7 +228,7 @@ const [activeEvent, setActiveEvent] = useState(null);
         </button>
       </div>
 
-    </div>
+    </Tilt>
   );
 }
 

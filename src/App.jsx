@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -22,32 +22,50 @@ import AdminGuard from "./admin/AdminGuard.jsx";
 
 
 import ScrollToTop from './components/ScrollToTop';
+import DesktopPopup from './components/DesktopPopup';
+import Preloader from './components/Preloader';
+import SmoothScroll from './components/SmoothScroll';
+import CircuitBackground from './components/CircuitBackground';
+
+import JoinTeam from './components/Jointeam';
 
 function App() {
+  const [loading, setLoading] = useState(true);
+  const [isJoinTeamOpen, setIsJoinTeamOpen] = useState(false);
+
+  const openJoinTeam = () => setIsJoinTeamOpen(true);
+
   return (
-    <Router>
-      <ScrollToTop />
-      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', position: 'relative' }}>
-        <Navbar />
-        <main style={{ flex: 1, paddingTop: '80px' }}>
-          <Routes>
+    <>
+      <CircuitBackground />
+      <SmoothScroll />
+      {loading && <Preloader onFinish={() => setLoading(false)} />}
+      <Router basename="/electryonz-symposium-website/">
+        <ScrollToTop />
+        <DesktopPopup />
+        <JoinTeam isOpen={isJoinTeamOpen} onClose={() => setIsJoinTeamOpen(false)} />
+        <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', position: 'relative' }}>
+          <Navbar openJoinTeam={openJoinTeam} />
+          <main style={{ flex: 1, paddingTop: '80px' }}>
+            <Routes>
 
 
-            <Route path="/__synerix_admin_login" element={<AdminLogin />} />
-            <Route path="/__synerix_admin_panel" element={<AdminGuard>  <AdminDashboard /></AdminGuard>} />
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/events" element={<Events />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/success" element={<Success />} />
-            <Route path="/schedule" element={<Schedule />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/payment" element={<Payment />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+              <Route path="/__altranz_admin_login" element={<AdminLogin />} />
+              <Route path="/__altranz_admin_panel" element={<AdminGuard>  <AdminDashboard /></AdminGuard>} />
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/events" element={<Events />} />
+              <Route path="/register" element={<Register openJoinTeam={openJoinTeam} />} />
+              <Route path="/success" element={<Success />} />
+              <Route path="/schedule" element={<Schedule />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/payment" element={<Payment />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </>
   );
 }
 

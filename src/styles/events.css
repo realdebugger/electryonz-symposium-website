@@ -37,6 +37,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
+  align-items: start;
+  /* 👈 Prevent other cards in the row from stretching */
 }
 
 /* ===============================
@@ -56,8 +58,8 @@
 }
 
 .event-details.open {
-  max-height: 300px;
-  /* adjust if content is taller */
+  max-height: 800px;
+  /* 👈 Increased to accommodate more content */
   opacity: 1;
   transform: translateY(0);
 }

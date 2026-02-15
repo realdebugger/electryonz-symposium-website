@@ -67,28 +67,28 @@ const Contact = () => {
 
                         <div style={{ marginBottom: '2rem' }}>
                             <h4 style={{ color: 'var(--color-primary)' }}>Student Coordinators</h4>
-                            <p style={{ color: 'var(--color-text-muted)' }}>Harish M : +91 6369143807</p>
-                            <p style={{ color: 'var(--color-text-muted)' }}>Harish T: +91 9360043031</p>
+                            <p style={{ color: 'var(--color-text-muted)' }}>Sakthi Selva Kumar M : +91 9344766994</p>
+                            <p style={{ color: 'var(--color-text-muted)' }}>Kavya S: +91 8667555796</p>
                         </div>
 
                         <div style={{ marginBottom: '2rem' }}>
-                            <h4 style={{ color: 'var(--color-primary)' }}>Help with Payment and Registration</h4>
-                            <p style={{ color: 'var(--color-text-muted)' }}>Varun : +91 6380993147</p>
-                            <p style={{ color: 'var(--color-text-muted)' }}>Praveen Kumar : +91 8015439677</p>
+                            <h4 style={{ color: 'var(--color-primary)' }}>Queries Related to Payment and Registration</h4>
+                            <p style={{ color: 'var(--color-text-muted)' }}>Madhan kumar R : +91 9363324409</p>
+                            <p style={{ color: 'var(--color-text-muted)' }}>Kishore p : +91 8807052185</p>
                         </div>
                         <div style={{ marginBottom: '2rem' }}>
                             <h4 style={{ color: 'var(--color-primary)' }}>Queries Related to Technical Events</h4>
-                            <p style={{ color: 'var(--color-text-muted)' }}>Jana D : +91 6381047917</p>
-                            <p style={{ color: 'var(--color-text-muted)' }}>Sri Manjunathan : +91 8807570819</p>
+                            <p style={{ color: 'var(--color-text-muted)' }}>Mouneshwaran R : +91 9384724485</p>
+                            <p style={{ color: 'var(--color-text-muted)' }}>Divya V : +91 9345706368 </p>
                         </div>
                         <div style={{ marginBottom: '2rem' }}>
                             <h4 style={{ color: 'var(--color-primary)' }}>For Other Queries</h4>
-                            <p style={{ color: 'var(--color-text-muted)' }}>Harish : +91 8838600896</p>
-                            <p style={{ color: 'var(--color-text-muted)' }}>Ponnivalavan : +91 8072312588</p>
+                            <p style={{ color: 'var(--color-text-muted)' }}>Balamurugan P : +91 8438110147</p>
+                            <p style={{ color: 'var(--color-text-muted)' }}>Sivaramakrishnan B : +91 7305466589</p>
                         </div>
                         <div style={{ marginBottom: '2rem' }}>
                             <h4 style={{ color: 'var(--color-primary)' }}>Email</h4>
-                            <p style={{ color: 'var(--color-text-muted)' }}>synerix26@gmail.com</p>
+                            <p style={{ color: 'var(--color-text-muted)' }}>altranz2026@gmail.com</p>
                         </div>
 
                         <div>

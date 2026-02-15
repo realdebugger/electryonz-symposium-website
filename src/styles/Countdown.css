@@ -1,0 +1,70 @@
+.flip-timer {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.flip-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.flip-card {
+    position: relative;
+    width: 70px;
+    height: 90px;
+    background: #111;
+    border-radius: 6px;
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 90px;
+    text-align: center;
+    color: var(--color-primary);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    overflow: hidden;
+}
+
+/* Horizontal line across card */
+.flip-card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 5;
+}
+
+.flip-label {
+    font-family: var(--font-tech);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-text-muted);
+    font-weight: 600;
+}
+
+/* Gold Glow on active card */
+.flip-card {
+    text-shadow: 0 0 15px var(--color-primary-glow);
+}
+
+@media (max-width: 768px) {
+    .flip-timer {
+        gap: 0.8rem;
+    }
+
+    .flip-card {
+        width: 55px;
+        height: 70px;
+        font-size: 2.2rem;
+        line-height: 70px;
+    }
+}

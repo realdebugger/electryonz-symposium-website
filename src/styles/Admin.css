@@ -1,11 +1,10 @@
 .admin-wrapper {
   padding: 120px 20px;
-  background: radial-gradient(
-    circle at top,
-    rgba(147, 23, 255, 0.15),
-    transparent 60%
-  );
+  background: radial-gradient(circle at top,
+      rgba(147, 23, 255, 0.15),
+      transparent 60%);
 }
+
 .admin-table {
   max-width: 1200px;
   margin: auto;
@@ -23,14 +22,24 @@
 .admin-grid-row {
   display: grid;
   grid-template-columns:
-    1.2fr   /* Name */
-    1.2fr   /* College */
-    2fr     /* Event */
-    0.7fr   /* Amount */
-    1.5fr   /* UTR */
-    1.5fr   /* Payment Status */
-    1.2fr   /* Attendance */
-    1.2fr;  /* Action */
+    1fr
+    /* Name */
+    1fr
+    /* College */
+    0.9fr
+    /* Team ID */
+    1.6fr
+    /* Event */
+    0.6fr
+    /* Amount */
+    1.2fr
+    /* UTR */
+    1.2fr
+    /* Payment Status */
+    1fr
+    /* Attendance */
+    1fr;
+  /* Action */
 
   align-items: center;
   gap: 0;
@@ -47,6 +56,7 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   transition: background 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
 }
+
 .admin-row.header {
   font-family: orbitron, sans-serif, var(--font-display);
   background: rgba(0, 0, 0, 0.85);
@@ -55,13 +65,16 @@
   letter-spacing: 1.5px;
   text-transform: uppercase;
 }
+
 .admin-row:not(.header):hover {
   background: rgba(34, 197, 94, 0.08);
   box-shadow: inset 0 0 15px rgba(34, 197, 94, 0.25);
 }
+
 .admin-row:last-child {
   border-bottom: none;
 }
+
 .status {
   padding: 6px 14px;
   border-radius: 999px;
@@ -82,13 +95,14 @@
   background: rgba(34, 197, 94, 0.15);
   color: #22c55e;
 }
+
 .payverify-btn {
   background: transparent;
   border: 1px solid rgba(34, 197, 94, 0.4);
   color: #22c55e;
-  padding: 6px 14px;
-  border-radius:50px;
-  font-size: 0.5rem;
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-size: 0.65rem;
   cursor: pointer;
   transition: all 0.25s ease;
 }
@@ -107,9 +121,9 @@
   background: transparent;
   border: 1px solid rgba(251, 146, 60, 0.4);
   color: #fb923c;
-  padding: 6px 14px;
+  padding: 4px 10px;
   border-radius: 999px;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   cursor: pointer;
   transition: all 0.25s ease;
 }
@@ -123,9 +137,9 @@
   background: transparent;
   border: 1px solid rgba(59, 130, 246, 0.4);
   color: #3b82f6;
-  padding: 6px 14px;
+  padding: 4px 10px;
   border-radius: 999px;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   cursor: pointer;
   transition: all 0.25s ease;
 }
@@ -139,9 +153,9 @@
   background: transparent;
   border: 1px solid rgba(239, 68, 68, 0.5);
   color: #ef4444;
-  padding: 6px 14px;
+  padding: 4px 10px;
   border-radius: 999px;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   cursor: pointer;
   transition: all 0.25s ease;
 }
@@ -151,21 +165,21 @@
   box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
 }
 
-.btnexcel{
-    background-color: transparent;
-    color: white;
-    font-family: orbitron, sans-serif, var(--font-display);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    padding: 1rem 1rem;
-    border-radius: 999px;
-    font-size: 0.8rem;
-    cursor: pointer;
-    transition: all 0.25s ease;
+.btnexcel {
+  background-color: transparent;
+  color: white;
+  font-family: orbitron, sans-serif, var(--font-display);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 1rem 1rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
 }
 
 .btnexcel:hover {
-    box-shadow: 0 0 30px rgba(34, 197, 94, 0.5);
-    transform: translateY(-8px);
+  box-shadow: 0 0 30px rgba(34, 197, 94, 0.5);
+  transform: translateY(-8px);
 }
 
 
@@ -183,17 +197,18 @@
 }
 
 @keyframes slideIn {
-  0%{
+  0% {
     transform: translateY(-20px);
     opacity: 0;
   }
-  100%{
+
+  100% {
     transform: translateY(0);
     opacity: 1;
   }
 }
 
-.admin-modal > div {
+.admin-modal>div {
   background: rgba(0, 0, 0, 0.85);
   border-radius: 18px;
   padding: 24px;
@@ -231,14 +246,15 @@
   background: rgba(255, 122, 24, 0.18);
   box-shadow: 0 0 12px rgba(255, 122, 24, 0.4);
 }
+
 .event-count-block {
   display: flex;
   flex-direction: column;
 }
 
 .event-count-card {
-  background: rgba(0,0,0,0.6);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
   padding: 1rem;
   display: flex;
@@ -246,17 +262,17 @@
   align-items: center;
   cursor: pointer;
   transition: all 0.25s ease;
-   color: aliceblue;
+  color: aliceblue;
 }
 
 .event-count-card:hover {
-  background: rgba(34,197,94,0.08);
-  box-shadow: 0 0 15px rgba(34,197,94,0.2);
+  background: rgba(34, 197, 94, 0.08);
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.2);
 }
 
 .event-expand {
   margin-top: 0.6rem;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
   padding: 0.6rem;
   display: grid;
@@ -269,7 +285,7 @@
   grid-template-columns: 1.5fr 1.5fr 0.8fr;
   font-size: 0.8rem;
   padding: 0.3rem 0.5rem;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   color: aliceblue;
 }
 
@@ -282,6 +298,7 @@
     opacity: 0;
     transform: translateY(-6px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -291,8 +308,22 @@
 
 
 @media (max-width: 768px) {
-    .admin-row {
-        grid-template-columns: 1fr;
-        padding: 15px;
-    }
+  .admin-row {
+    grid-template-columns: 1fr;
+    padding: 15px;
+  }
+}
+
+.event-count-wrapper {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.event-count-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
 }
