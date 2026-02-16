@@ -18,6 +18,23 @@ export const eventsData = [
   },
 
   {
+    id: "project-expo",
+    title: "Project Expo",
+    category: "Technical",
+    venue: "ELECTRONICS LAB",
+    time: "1:30 PM – 2:30 PM",
+    duration: 1,
+    modes: ["TEAM"],
+    fee: { SOLO: 350, TEAM: 350 },
+    maxMembers: 3,
+    rules: [
+      "Working model or prototype preferred",
+      "Participants must explain working principle",
+      "Judging based on innovation and feasibility"
+    ],
+  },
+
+  {
     id: "voltex",
     title: "voltex",
     category: "Technical",
@@ -71,22 +88,7 @@ export const eventsData = [
 
 
 
-  {
-    id: "project-expo",
-    title: "Project Expo",
-    category: "Technical",
-    venue: "ELECTRONICS LAB",
-    time: "1:30 PM – 2:30 PM",
-    duration: 1,
-    modes: ["TEAM"],
-    fee: { SOLO: 350, TEAM: 350 },
-    maxMembers: 3,
-    rules: [
-      "Working model or prototype preferred",
-      "Participants must explain working principle",
-      "Judging based on innovation and feasibility"
-    ],
-  },
+
 
   /* ===============================
    NON-TECHNICAL EVENTS

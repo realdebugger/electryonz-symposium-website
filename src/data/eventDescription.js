@@ -6,16 +6,16 @@ export const technicalEventDescriptions = {
     "",
 
   "grid-wars":
-    "Identify the correct mechanical term by connecting images related to kinematics concepts.",
+    "",
 
   "relay-rush":
-    "Perform the given machining or shaping task accurately within the stipulated time.",
+    "",
 
   "components-scavenger-hunt":
-    "Identify and find the correct mechanical component displayed in the image.",
+    "",
 
   "project-expo":
-    "Exhibit your mechanical projects, demonstrating innovation, design thinking, and real-world application.",
+    "Exhibit your Electrical projects, demonstrating innovation, design thinking, and real-world application.",
 
   "treasure-hunt":
     "Follow the clues, solve the puzzles, and find the hidden treasure!",
