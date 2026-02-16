@@ -343,45 +343,7 @@ h2 {
 }
 
 
-/* --------------------------highlight------------------------- */
-.highlight-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 320px));
-  justify-content: center;
-  gap: 2rem;
-}
 
-.highlight-section {
-  scale: 0.8;
-  padding: 3rem 2rem;
-  border: 1px solid var(--color-border);
-  background: linear-gradient(180deg,
-      rgba(255, 255, 255, 0.02),
-      transparent);
-  text-align: center;
-  cursor: pointer;
-  transition: transform 0.3s ease-in-out, border-color 0.3s ease;
-
-
-}
-
-.highlight-technical {
-  --highlight-color: var(--color-primary);
-}
-
-.highlight-non-technical {
-  --highlight-color: var(--color-secondary);
-}
-
-
-
-@media (hover: hover) {
-  .highlight-section:hover {
-    transform: translateY(-10px);
-    border-color: var(--highlight-color);
-    box-shadow: 1px 1px 15px var(--highlight-color);
-  }
-}
 
 
 /* Fade + slide */

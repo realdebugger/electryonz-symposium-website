@@ -12,6 +12,7 @@ const Events = () => {
   const [searchParams] = useSearchParams();
   const categoryFromUrl = searchParams.get("category");
 
+
   const [filter, setFilter] = useState(
     categoryFromUrl ? categoryFromUrl : "All"
   );
@@ -22,6 +23,7 @@ const Events = () => {
   // ✅ ACCORDION STATE (only one open)
   const [openEventId, setOpenEventId] = useState(null);
 
+  // Checks for popups whenever filter changes
   useEffect(() => {
     // Show offer if filtering by Technical or coming from URL
     if (filter === "Technical") {
@@ -29,13 +31,28 @@ const Events = () => {
       if (isBeforeDeadline) {
         setShowOfferModal(true);
       }
+    } else if (filter === "Non-Technical") {
+      setShowNonTechWarning(true);
     }
   }, [filter]);
 
+  // Syncs filter with URL category
   useEffect(() => {
     if (categoryFromUrl) {
       setFilter(categoryFromUrl);
-      setOpenEventId(null); // close expanded card when category changes
+      setOpenEventId(null);
+
+      // Force trigger popups based on URL with a small delay to ensure it catches
+      const timer = setTimeout(() => {
+        if (categoryFromUrl === "Technical") {
+          const isBeforeDeadline = new Date() < new Date("2026-02-22");
+          if (isBeforeDeadline) setShowOfferModal(true);
+        } else if (categoryFromUrl === "Non-Technical") {
+          setShowNonTechWarning(true);
+        }
+      }, 300); // 300ms delay to be safe
+
+      return () => clearTimeout(timer);
     }
   }, [categoryFromUrl]);
 
@@ -178,12 +195,7 @@ const Events = () => {
               <button
                 key={cat}
                 onClick={() => {
-                  if (cat === "Non-Technical" && filter !== "Non-Technical") {
-                    setShowNonTechWarning(true);
-                    setFilter(cat);
-                  } else {
-                    setFilter(cat);
-                  }
+                  setFilter(cat);
                   setOpenEventId(null); // close open card
                 }}
                 style={{

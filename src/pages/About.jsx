@@ -32,7 +32,7 @@ const About = () => {
           </p>
 
           <a
-            href="https://gcebargur.ac.in/22/about-us"
+            href="https://gcebargur.ac.in/21/about-us"
             target="_blank"
             rel="noopener noreferrer"
             className="about-department-btn"

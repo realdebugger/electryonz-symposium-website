@@ -184,22 +184,7 @@ const Home = () => {
       </section>
 
 
-      {/* ================= HIGHLIGHTS ================= */}
-      <div className="highlight-grid">
-        {[
-          { title: "Technical", color: "var(--color-primary)" },
-          { title: "Non-Technical", color: "var(--color-secondary)" },
-        ].map((card) => (
-          <div
-            key={card.title}
-            className={`highlight-section highlight-${card.title.toLowerCase().replace(" ", "-")}`}
-            onClick={() => navigate(`/events?category=${card.title}`)}
-          >
-            <h3 style={{ color: card.color }}>{card.title}</h3>
-          </div>
 
-        ))}
-      </div>
 
     </div>
   );

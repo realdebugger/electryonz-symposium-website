@@ -112,24 +112,7 @@
     text-align: left;
   }
 
-  /* ---------------------------------------------------------------- */
-  /* ----------------------------Highlight------------------------------------ */
-  /* ---------------------------------------------------------------- */
-  .highlight-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-items: center;
-    /* 🔑 centers fixed-width cards */
-    gap: 1.5rem;
-  }
 
-  .highlight-section {
-    width: 320px;
-    /* 🔑 FORCE SAME WIDTH */
-    max-width: 320px;
-    box-sizing: border-box;
-    transform: translateY(20px);
-  }
 
   /* -----------------schedule--- */
   .schedule-row {
