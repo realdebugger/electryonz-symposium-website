@@ -34,8 +34,8 @@ async function sendMail({ to, subject, html }) {
     "https://api.brevo.com/v3/smtp/email",
     {
       sender: {
-        name: "SYNERIX Team",
-        email: "no-reply@synerix26.site", // or no-reply@yourdomain.com
+        name: "ALTRANZ TEAM",
+        email: "altranz2026@gmail.com", // or no-reply@yourdomain.com
       },
       to: [{ email: to }],
       subject,

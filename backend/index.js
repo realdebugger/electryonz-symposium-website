@@ -546,8 +546,8 @@ app.post("/api/contact", async (req, res) => {
     }
 
     await sendMail({
-      to: "synerix26@gmail.com",
-      subject: "New Contact Message – SYNERIX 2026",
+      to: "altranz2026@gmail.com",
+      subject: "New Contact Message – ALTRANZ 2026",
       html: `
         <h3>New Contact Message</h3>
         <p><b>Name:</b> ${name}</p>
@@ -875,25 +875,34 @@ app.get("/api/admin/event-count", adminAuth, async (_, res) => {
 ================================ */
 app.put("/api/admin/payment/verify/:id", adminAuth, async (req, res) => {
   try {
+    const { utr } = req.body; // Accept updated UTR
+    const { id } = req.params;
+
+    // 1. Get current registration
     const [[reg]] = await pool.execute(
       "SELECT * FROM registrations WHERE id=?",
-      [req.params.id]
+      [id]
     );
 
     if (!reg) return res.status(404).json({ success: false });
 
+    // 2. Determine UTR to use (New or Old)
+    const finalUTR = utr ? utr.trim() : reg.utr;
+
+    // 3. Update DB
     await pool.execute(
       `
       UPDATE registrations
       SET payment_status='VERIFIED',
           verified_at=NOW(),
-          verified_by='ADMIN'
+          verified_by='ADMIN',
+          utr=? 
       WHERE id=?
       `,
-      [req.params.id]
+      [finalUTR, id]
     );
 
-    // Email should NOT break API
+    // 4. Send Email
     try {
       await sendMail({
         to: reg.email,
@@ -905,14 +914,14 @@ app.put("/api/admin/payment/verify/:id", adminAuth, async (req, res) => {
           ${reg.team_name ? `<h3 style="color:#007bff">Team Name: ${reg.team_name}</h3>` : ""}
           ${reg.team_id ? `<h3 style="color:#28a745">Team ID: ${reg.team_id}</h3>` : ""}
           <p><b>Amount:</b> ₹${reg.amount}</p>
-          <p><b>UTR:</b> ${reg.utr}</p>
+          <p><b>Overview:</b> Payment Verified via UTR: ${finalUTR}</p>
         `,
       });
     } catch (mailErr) {
       console.error("MAIL FAILED:", mailErr.message);
     }
 
-    res.json({ success: true });
+    res.json({ success: true, updatedUTR: finalUTR });
   } catch (err) {
     console.error("VERIFY PAYMENT ERROR:", err);
     res.status(500).json({ success: false });

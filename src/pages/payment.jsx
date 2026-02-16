@@ -1,25 +1,55 @@
-import React, { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import PageWrapper from "../components/pageWrapper";
-import { API_BASE } from "../config/api";
+import { eventsData } from "../data/events";
 
 const Payment = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const amount = location.state?.amount || 0;
-  const eventName = location.state?.event || "SYNERIX EVENT";
+  // 1. Recovery from State OR Session
+  let amount = location.state?.amount;
+  let eventName = location.state?.event;
+  let eventsDetail = location.state?.eventsDetail;
+
+  const savedForm = sessionStorage.getItem("synerix_form_draft");
+  let formData = savedForm ? JSON.parse(savedForm) : null;
+
+  // If state is lost (refresh), try to reconstruct from session
+  if (!amount && formData) {
+    // Re-calculate amount and details
+    let total = 0;
+    const isEarlyBird = new Date() < new Date("2026-02-22");
+
+    eventsDetail = formData.selectedEvents.map(sel => {
+      const ev = eventsData.find(e => e.id === sel.eventId);
+      if (ev) {
+        let price = ev.fee?.[sel.mode];
+        // Logic match Register.jsx
+        if (isEarlyBird && (ev.id === "paper-presentation" || ev.id === "project-expo")) {
+          price = 300;
+        }
+        total += (price || 0);
+
+        return { title: ev.title, mode: sel.mode };
+      }
+      return null;
+    }).filter(Boolean);
+
+    amount = total;
+    eventName = eventsDetail.map(e => e.title).join(", ");
+  }
+
+  amount = amount || 0;
+  eventName = eventName || "SYNERIX EVENT";
 
   const [utr, setUtr] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const formattedAmount = parseFloat(amount).toFixed(2);
-  // Truncate event name to 80 chars to avoid UPI limit errors
-  const safeNote = (eventName || "SYNERIX EVENT").substring(0, 80);
+  const safeNote = (eventName).substring(0, 80);
 
   const upiLink = `upi://pay?pa=madhankumar1652005@oksbi&pn=${encodeURIComponent(
     "SYNERIX MEA"
   )}&am=${formattedAmount}&cu=INR&tn=${encodeURIComponent(safeNote)}`;
+
 
   /* ===============================
      SUBMIT PAYMENT & REGISTER
@@ -27,21 +57,16 @@ const Payment = () => {
   const handleSubmitPayment = async () => {
     setError("");
 
-    // 🔒 UTR FORMAT CHECK (Frontend)
     if (!/^[A-Za-z0-9]{12,22}$/.test(utr)) {
       setError("Please enter a valid Transaction ID (UTR)");
       return;
     }
 
-    // 🔹 Load saved registration form
-    const savedForm = sessionStorage.getItem("synerix_form_draft");
-    if (!savedForm) {
-      alert("Registration data not found. Please register again.");
+    if (!formData) {
+      alert("Session expired. Please register again.");
       navigate("/register");
       return;
     }
-
-    const formData = JSON.parse(savedForm);
 
     const payload = {
       name: formData.name,
@@ -53,6 +78,7 @@ const Payment = () => {
       event: eventName,
       amount: amount,
       utr: utr,
+      eventsDetail: eventsDetail || [] // Pass this to backend!
     };
 
     try {

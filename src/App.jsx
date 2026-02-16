@@ -40,7 +40,7 @@ function App() {
       <CircuitBackground />
       <SmoothScroll />
       {loading && <Preloader onFinish={() => setLoading(false)} />}
-      <Router basename="/electryonz-symposium-website/">
+      <Router>
         <ScrollToTop />
         <DesktopPopup />
         <JoinTeam isOpen={isJoinTeamOpen} onClose={() => setIsJoinTeamOpen(false)} />

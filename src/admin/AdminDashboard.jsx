@@ -803,41 +803,62 @@ Thank you for your patience and continued support.
     );
   };
 
-  const verifyPayment = async (id) => {
-    // 1. Optimistic Update (Instant UI)
-    const previousData = data.find(item => item.id == id);
+  /* ================= VERIFY PAYMENT MODAL LOGIC ================= */
+  const [showVerifyModal, setShowVerifyModal] = useState(false);
+  const [verifyUser, setVerifyUser] = useState(null);
+  const [verifyUtr, setVerifyUtr] = useState("");
+
+  const verifyPayment = (id) => {
+    const user = data.find(u => u.id === id);
+    if (!user) return;
+    setVerifyUser(user);
+    setVerifyUtr(user.utr || "");
+    setShowVerifyModal(true);
+  };
+
+  const handleVerifyConfirm = async () => {
+    if (!verifyUser) return;
+
+    // 1. Optimistic Update
+    const previousData = data.find(item => item.id == verifyUser.id);
     setData((prev) =>
       prev.map((item) =>
-        item.id == id
+        item.id == verifyUser.id
           ? {
             ...item,
             payment_status: "VERIFIED",
             verified_at: new Date().toISOString(),
             verified_by: "ADMIN",
+            utr: verifyUtr // Update local state too
           }
           : item
       )
     );
 
     try {
-      const res = await fetch(`${API_BASE}/api/admin/payment/verify/${id}`, {
+      const res = await fetch(`${API_BASE}/api/admin/payment/verify/${verifyUser.id}`, {
         method: "PUT",
         headers: {
+          "Content-Type": "application/json",
           "x-admin-secret": import.meta.env.VITE_ADMIN_SECRET,
         },
+        body: JSON.stringify({ utr: verifyUtr })
       });
+
       const json = await res.json();
-      console.log("PAYMENT VERIFY RESPONSE:", json);
 
       if (!json.success) {
         throw new Error(json.message || "Verification failed");
       }
+      setShowVerifyModal(false);
+      setVerifyUser(null);
+
     } catch (err) {
       console.error("VERIFY ERROR:", err);
       // 2. Revert if failed
       if (previousData) {
         setData((prev) =>
-          prev.map((item) => (item.id == id ? previousData : item))
+          prev.map((item) => (item.id == verifyUser.id ? previousData : item))
         );
       }
       alert("Verification Failed. Please check console.");
@@ -1590,6 +1611,42 @@ Thank you for your patience and continued support.
           </button>
 
           <button className="undo-btn" onClick={() => setShowAddEvent(false)}>
+            Cancel
+          </button>
+        </div>
+      )}
+      {/* VERIFY PAYMENT MODAL */}
+      {showVerifyModal && verifyUser && (
+        <div className="admin-modal">
+          <h3>Verify Payment for {verifyUser.name}</h3>
+          <p>This will mark the user as verified and send a confirmation email.</p>
+
+          <div style={{ margin: "1rem 0" }}>
+            <label style={{ display: "block", marginBottom: "0.5rem", fontSize: "0.9rem", color: "#ccc" }}>
+              Amount Expected: <span style={{ color: "#fff", fontWeight: "bold" }}>₹{verifyUser.amount}</span>
+            </label>
+
+            <label style={{ display: "block", marginBottom: "0.5rem", fontSize: "0.9rem" }}>UTR / Reference ID:</label>
+            <input
+              type="text"
+              value={verifyUtr}
+              onChange={(e) => setVerifyUtr(e.target.value)}
+              style={{
+                width: "100%",
+                padding: "0.8rem",
+                background: "#000",
+                border: "1px solid #333",
+                color: "#e0e0e0",
+                borderRadius: "5px"
+              }}
+            />
+          </div>
+
+          <button className="verify-btn" onClick={handleVerifyConfirm} style={{ width: "100%", marginBottom: "0.5rem" }}>
+            ✅ Confirm & Send Email
+          </button>
+
+          <button className="undo-btn" onClick={() => setShowVerifyModal(false)} style={{ width: "100%" }}>
             Cancel
           </button>
         </div>
