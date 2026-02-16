@@ -22,7 +22,7 @@ import AdminGuard from "./admin/AdminGuard.jsx";
 
 
 import ScrollToTop from './components/ScrollToTop';
-import DesktopPopup from './components/DesktopPopup';
+
 import Preloader from './components/Preloader';
 import SmoothScroll from './components/SmoothScroll';
 import CircuitBackground from './components/CircuitBackground';
@@ -42,7 +42,7 @@ function App() {
       {loading && <Preloader onFinish={() => setLoading(false)} />}
       <Router>
         <ScrollToTop />
-        <DesktopPopup />
+
         <JoinTeam isOpen={isJoinTeamOpen} onClose={() => setIsJoinTeamOpen(false)} />
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', position: 'relative' }}>
           <Navbar openJoinTeam={openJoinTeam} />
