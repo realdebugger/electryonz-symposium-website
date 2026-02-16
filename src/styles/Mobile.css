@@ -10,7 +10,8 @@
   }
 
   .container {
-    padding: 0;
+    padding: 0 1rem;
+    overflow-x: hidden;
   }
 
   /* ---------------Hero----------------- */
@@ -44,8 +45,8 @@
 
   .hero-section {
     min-height: 42vh;
-    padding-top: 0;
-    margin-top: -30px;
+    padding-top: 80px;
+    margin-top: 0;
     /* 👆 Move up to counteract global padding */
   }
 
@@ -58,7 +59,8 @@
     padding-inline: 10px;
     margin: 0 auto;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    gap: 1rem;
     /* 👈 Switch to row */
     align-items: center;
     justify-content: space-between;
@@ -179,8 +181,9 @@
   /* ------------------------------------------------------------------- */
   .events-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
-    gap: 1rem;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding-bottom: 2rem;
   }
 
   .event-card {

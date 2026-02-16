@@ -41,6 +41,15 @@
   /* 👈 Prevent other cards in the row from stretching */
 }
 
+@media (max-width: 768px) {
+  .events-grid {
+    grid-template-columns: 1fr;
+    /* Stack cards */
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+}
+
 /* ===============================
    EVENT CARD EXPAND ANIMATION
 ================================ */

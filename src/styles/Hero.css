@@ -20,7 +20,7 @@
 
 .hero-title {
   font-family: var(--font-hero);
-  font-size: clamp(4rem, 10vw, 8rem);
+  font-size: clamp(2.5rem, 10vw, 8rem);
   font-weight: 700;
   letter-spacing: 0.1em;
   /* Cinematic spacing */

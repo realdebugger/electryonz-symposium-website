@@ -17,6 +17,8 @@ const Events = () => {
   );
   const [showOfferModal, setShowOfferModal] = useState(false);
 
+  const [showNonTechWarning, setShowNonTechWarning] = useState(false);
+
   // ✅ ACCORDION STATE (only one open)
   const [openEventId, setOpenEventId] = useState(null);
 
@@ -105,6 +107,45 @@ const Events = () => {
         </div>
       )}
 
+      {/* NON-TECHNICAL WARNING POPUP */}
+      {showNonTechWarning && (
+        <div style={{
+          position: "fixed", top: 0, left: 0, width: "100%", height: "100%",
+          background: "rgba(0,0,0,0.8)", zIndex: 20000, display: "flex",
+          justifyContent: "center", alignItems: "center", padding: "20px",
+          backdropFilter: "blur(5px)"
+        }} onClick={() => {
+          setShowNonTechWarning(false);
+          setFilter("All");
+        }}>
+          <div className="card" style={{
+            maxWidth: "400px", padding: "2rem", border: "1px solid var(--color-secondary)",
+            textAlign: "center", background: "#0a0a0a", position: "relative",
+            boxShadow: "0 0 30px rgba(192, 192, 192, 0.2)"
+          }} onClick={(e) => e.stopPropagation()}>
+            <h2 style={{ color: "var(--color-secondary)", marginBottom: "1rem", fontSize: "1.5rem" }}>⚠️ IMPORTANT NOTICE</h2>
+            <p style={{ fontSize: "1.1rem", lineHeight: "1.6", marginBottom: "1.5rem", color: "#e0e0e0" }}>
+              There is <strong>NO ON-SPOT REGISTRATION</strong> for Non-Technical events.
+            </p>
+            <p style={{ fontSize: "0.9rem", color: "var(--color-text-muted)", marginBottom: "2rem" }}>
+              Please register online before the deadline to participate.
+            </p>
+            <button className="btn btn-secondary" onClick={() => setShowNonTechWarning(false)}>
+              I Understand
+            </button>
+            <button style={{
+              background: "none", border: "none", color: "#666",
+              textDecoration: "underline", marginLeft: "1rem", cursor: "pointer"
+            }} onClick={() => {
+              setShowNonTechWarning(false);
+              setFilter("All");
+            }}>
+              Go Back
+            </button>
+          </div>
+        </div>
+      )}
+
       <h1 style={{ textAlign: "center", marginBottom: "1rem" }}>
         Events
       </h1>
@@ -137,7 +178,12 @@ const Events = () => {
               <button
                 key={cat}
                 onClick={() => {
-                  setFilter(cat);
+                  if (cat === "Non-Technical" && filter !== "Non-Technical") {
+                    setShowNonTechWarning(true);
+                    setFilter(cat);
+                  } else {
+                    setFilter(cat);
+                  }
                   setOpenEventId(null); // close open card
                 }}
                 style={{
