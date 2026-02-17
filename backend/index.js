@@ -987,7 +987,7 @@ app.put("/api/admin/add-event/:id", adminAuth, async (req, res) => {
 app.post("/test-brevo", async (req, res) => {
   try {
     await sendMail({
-      to: "vvarunraj69@gmail.com", // change to your email
+      to: "altranz2026@gmail.com", // change to your email
       subject: "Brevo Test ✅",
       html: "<h2>Brevo SMTP is working perfectly 🚀</h2>",
     });

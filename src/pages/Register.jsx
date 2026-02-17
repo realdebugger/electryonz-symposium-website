@@ -675,7 +675,7 @@ const Register = () => {
   /* ---------------- TOTAL CALCULATION ---------------- */
   useEffect(() => {
     let total = 0;
-    const isEarlyBird = new Date() < new Date("2026-02-22");
+    const isEarlyBird = new Date() < new Date("2026-02-25");
 
     for (const sel of formData.selectedEvents) {
       const event = eventsData.find((e) => e.id === sel.eventId);

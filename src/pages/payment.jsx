@@ -47,7 +47,7 @@ const Payment = () => {
   const safeNote = (eventName).substring(0, 80);
 
   const upiLink = `upi://pay?pa=madhankumar1652005@oksbi&pn=${encodeURIComponent(
-    "SYNERIX MEA"
+    "ALTRANZ EVENT"
   )}&am=${formattedAmount}&cu=INR&tn=${encodeURIComponent(safeNote)}`;
 
 

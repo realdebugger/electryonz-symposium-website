@@ -18,7 +18,7 @@ const Success = () => {
     }
   }
 
-  
+
 
   // 3️⃣ Hard fallback
   if (!data) {
@@ -32,95 +32,95 @@ const Success = () => {
     );
   }
 
-const {
-  name,
-  email,
-  college,
-  event,
-  amount,
-  utr
-} = data;
+  const {
+    name,
+    email,
+    college,
+    event,
+    amount,
+    utr
+  } = data;
 
 
 
 
 
   console.log("SUCCESS DATA FULL:", data);
-console.log("KEYS:", Object.keys(data));
+  console.log("KEYS:", Object.keys(data));
 
 
   return (
     <PageWrapper>
-    <div className="success-wrapper">
-      <div className="success-card">
+      <div className="success-wrapper">
+        <div className="success-card">
 
-        {/* TITLE */}
-        <h1 className="success-title">
-          REGISTRATION SUBMITTED
-        </h1>
+          {/* TITLE */}
+          <h1 className="success-title">
+            REGISTRATION SUBMITTED
+          </h1>
 
-        {/* DETAILS */}
-        <div className="success-details">
+          {/* DETAILS */}
+          <div className="success-details">
 
-          <div className="detail-row">
-            <span className="detail-label">Name</span>
-            <span className="detail-value">{name}</span>
+            <div className="detail-row">
+              <span className="detail-label">Name</span>
+              <span className="detail-value">{name}</span>
+            </div>
+
+            <div className="detail-row">
+              <span className="detail-label">Email</span>
+              <span className="detail-value">{email}</span>
+            </div>
+
+            <div className="detail-row">
+              <span className="detail-label">College</span>
+              <span className="detail-value">{college}</span>
+            </div>
+
+            <div className="detail-row">
+              <span className="detail-label">Event(s)</span>
+              <span className="detail-value">{event}</span>
+            </div>
+
+            <div className="detail-row">
+              <span className="detail-label">Amount</span>
+              <span className="detail-value">₹{amount}</span>
+            </div>
+
+            <div className="detail-row">
+              <span className="detail-label">UTR</span>
+              <span className="detail-value">{utr || "—"}</span>
+            </div>
+
           </div>
 
-          <div className="detail-row">
-            <span className="detail-label">Email</span>
-            <span className="detail-value">{email}</span>
+          {/* STATUS BOX */}
+          <div className="status-box">
+            ⏳ <b>Payment under verification</b>
+            <br />
+            You will receive a confirmation email once verified by admin.
           </div>
 
-          <div className="detail-row">
-            <span className="detail-label">College</span>
-            <span className="detail-value">{college}</span>
-          </div>
-
-          <div className="detail-row">
-            <span className="detail-label">Event(s)</span>
-            <span className="detail-value">{event}</span>
-          </div>
-
-          <div className="detail-row">
-            <span className="detail-label">Amount</span>
-            <span className="detail-value">₹{amount}</span>
-          </div>
-
-          <div className="detail-row">
-            <span className="detail-label">UTR</span>
-            <span className="detail-value">{utr || "—"}</span>
-          </div>
+          {/* HOME BUTTON */}
+          <button
+            className="success-home-btn"
+            onClick={() => navigate("/")}
+          >
+            GO TO HOME
+          </button>
 
         </div>
+        <p style={{ textAlign: "center", marginTop: "2rem" }}>➕ Want to add more events?
 
-        {/* STATUS BOX */}
-        <div className="status-box">
-          ⏳ <b>Payment under verification</b>
-          <br />
-          You will receive a confirmation email once verified by admin.
-        </div>
+          If you wish to register for additional events,
+          please contact the event coordinators or help desk.
 
-        {/* HOME BUTTON */}
-        <button
-          className="success-home-btn"
-          onClick={() => navigate("/")}
-        >
-          GO TO HOME
-        </button>
+          ⚠️ Note:
+          • Additional amount may apply
+          • Payment status will go back to “Under Verification”
+        </p>
 
       </div>
-      <p style={{textAlign: "center", marginTop: "2rem"}}>➕ Want to add more events?
-
-If you wish to register for additional events,
-please contact the event coordinators or help desk.
-
-⚠️ Note:
-• Additional amount may apply
-• Payment status will go back to “Under Verification”
-</p>
-
-    </div>
     </PageWrapper>
   );
 };
