@@ -463,10 +463,10 @@ app.use(
     origin: [
       "http://localhost:5173",
       "http://localhost:5174",
-      "https:electryonz-symposium-website.vercel.app",
+      "https://electryonz-symposium-website.vercel.app",
       // "https://synerix26.site",
       // "https://www.synerix26.site",
-      /^ https: \/\/.*\.vercel\.app$/,
+      /^https:\/\/.*\.vercel\.app$/,
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "x-admin-secret"],
