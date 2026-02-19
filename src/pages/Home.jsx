@@ -130,9 +130,9 @@ const Home = () => {
 
               <div className="hero-actions reveal delay-5">
                 <Magnetic strength={0.2} radius={150}>
-                  <Link to="https://altranz26.vercel.app." className="btn">
+                  <a href="https://altranz26.vercel.app." className="btn">
                     Register Now
-                  </Link>
+                  </a>
                 </Magnetic>
 
                 <Magnetic strength={0.2} radius={150}>
