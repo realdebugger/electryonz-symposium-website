@@ -130,7 +130,7 @@ const Home = () => {
 
               <div className="hero-actions reveal delay-5">
                 <Magnetic strength={0.2} radius={150}>
-                  <a href="https://altranz26.vercel.app" className="btn btn-primary" onClick={() => setIsOpen(false)}>
+                  <a href="https://altranz26.vercel.app" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
                     Register
                   </a>
                 </Magnetic>

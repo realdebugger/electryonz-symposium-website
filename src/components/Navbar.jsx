@@ -77,7 +77,7 @@ const Navbar = ({ openJoinTeam }) => {
 
 
                     <li className="nav-item">
-                        <a href="https://altranz26.vercel.app" className="btn btn-primary" onClick={() => setIsOpen(false)}>
+                        <a href="https://altranz26.vercel.app" target="_blank" rel="noopener noreferrer" className="btn btn-primary" onClick={() => setIsOpen(false)}>
                             Register
                         </a>
                     </li>

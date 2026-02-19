@@ -33,9 +33,10 @@ const EventCard = ({ event, isOpen, onToggle, index, onOpenRules }) => {
   else borderColor = "#a217ffff";
 
   const handleRegister = () => {
-    navigate("/register", {
-      state: { preselectedEvent: event.title },
-    });
+    // navigate("/register", {
+    //   state: { preselectedEvent: event.title },
+    // });
+    window.open("https://altranz26.vercel.app", "_blank", "noopener,noreferrer");
   };
 
   return (
