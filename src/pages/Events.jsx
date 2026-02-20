@@ -19,6 +19,7 @@ const Events = () => {
   const [showOfferModal, setShowOfferModal] = useState(false);
 
   const [showNonTechWarning, setShowNonTechWarning] = useState(false);
+  const [showCombinedModal, setShowCombinedModal] = useState(false);
 
   // ✅ ACCORDION STATE (only one open)
   const [openEventId, setOpenEventId] = useState(null);
@@ -33,6 +34,8 @@ const Events = () => {
       }
     } else if (filter === "Non-Technical") {
       setShowNonTechWarning(true);
+    } else if (filter === "All") {
+      setShowCombinedModal(true);
     }
   }, [filter]);
 
@@ -159,6 +162,64 @@ const Events = () => {
             }}>
               Go Back
             </button>
+          </div>
+        </div>
+      )}
+
+      {/* COMBINED MODAL (Default on "All") */}
+      {showCombinedModal && (
+        <div style={{
+          position: "fixed", top: 0, left: 0, width: "100%", height: "100%",
+          background: "rgba(0,0,0,0.85)", zIndex: 20000, display: "flex",
+          justifyContent: "center", alignItems: "center", padding: "20px",
+          backdropFilter: "blur(8px)"
+        }}>
+          <div className="card" style={{
+            maxWidth: "600px", width: "100%", padding: "2rem", border: "1px solid var(--color-primary)",
+            background: "#0a0a0a", position: "relative",
+            maxHeight: "90vh", overflowY: "auto"
+          }}>
+            <button
+              onClick={() => setShowCombinedModal(false)}
+              style={{
+                position: "absolute", top: "10px", right: "15px", background: "none", border: "none",
+                color: "#fff", fontSize: "1.5rem", cursor: "pointer"
+              }}
+            >✕</button>
+
+            {/* Part 1: Early Bird (Conditional based on date) */}
+            {(new Date() < new Date("2026-02-22")) && (
+              <div style={{ marginBottom: "2rem", paddingBottom: "2rem", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
+                <h2 style={{ color: "var(--color-primary)", marginBottom: "1rem", textAlign: "center" }}>⚡ EARLY BIRD OFFER ⚡</h2>
+                <p style={{ fontSize: "1rem", lineHeight: "1.5", marginBottom: "1rem", textAlign: "center", color: "#ddd" }}>
+                  Register for <strong style={{ color: "#fff" }}>Paper Presentation</strong> or <strong style={{ color: "#fff" }}>Project Expo</strong> before <strong style={{ color: "var(--color-primary)" }}>Feb 22</strong> and get a special discount!
+                </p>
+                <div style={{
+                  display: "flex", justifyContent: "center", gap: "1rem",
+                  fontSize: "1.1rem", fontWeight: "bold"
+                }}>
+                  <span style={{ textDecoration: "line-through", opacity: 0.5 }}>₹350</span>
+                  <span style={{ color: "var(--color-primary)" }}>₹300 ONLY</span>
+                </div>
+              </div>
+            )}
+
+            {/* Part 2: Non-Tech Warning */}
+            <div style={{ textAlign: "center" }}>
+              <h2 style={{ color: "var(--color-secondary)", marginBottom: "1rem" }}>⚠️ IMPORTANT NOTICE</h2>
+              <p style={{ fontSize: "1rem", lineHeight: "1.5", marginBottom: "1rem", color: "#ddd" }}>
+                There is <strong>NO ON-SPOT REGISTRATION</strong> for <strong style={{ color: "var(--color-secondary)" }}>Non-Technical events</strong>.
+              </p>
+              <p style={{ fontSize: "0.9rem", color: "var(--color-text-muted)", marginBottom: "1.5rem" }}>
+                Please register online before the deadline.
+              </p>
+            </div>
+
+            <div style={{ textAlign: "center", marginTop: "1rem" }}>
+              <button className="btn" onClick={() => setShowCombinedModal(false)}>
+                Got it, thanks!
+              </button>
+            </div>
           </div>
         </div>
       )}
