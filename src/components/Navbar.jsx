@@ -41,7 +41,7 @@ const Navbar = ({ openJoinTeam }) => {
                     ))}
 
 
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                         <div style={{
                             display: "flex",
                             flexDirection: "column",
@@ -74,7 +74,7 @@ const Navbar = ({ openJoinTeam }) => {
                             </button>
                         </div>
                     </li>
-
+ */}
 
 
                 </ul>
